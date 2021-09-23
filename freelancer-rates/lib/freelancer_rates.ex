@@ -4,8 +4,9 @@ defmodule FreelancerRates do
     hourly_rate * 8.0
   end
 
+  @spec apply_discount(number, number) :: float
   def apply_discount(before_discount, discount) do
-    # Please implement the apply_discount/2 function
+    before_discount - (before_discount / discount)
   end
 
   def monthly_rate(hourly_rate, discount) do
