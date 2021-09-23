@@ -9,7 +9,10 @@ defmodule Lasagna do
     expected_minutes_in_oven() - actual
   end
 
-  # TODO: define the 'preparation_time_in_minutes/1' function
+  @spec preparation_time_in_minutes(number) :: number
+  def preparation_time_in_minutes(layers) do
+    layers * 2
+  end
 
   # TODO: define the 'total_time_in_minutes/2' function
 
