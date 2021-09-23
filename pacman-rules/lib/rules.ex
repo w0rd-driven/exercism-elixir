@@ -1,6 +1,6 @@
 defmodule Rules do
   def eat_ghost?(power_pellet_active, touching_ghost) do
-    # Please implement the eat_ghost?/2 function
+    power_pellet_active && touching_ghost
   end
 
   def score?(touching_power_pellet, touching_dot) do
