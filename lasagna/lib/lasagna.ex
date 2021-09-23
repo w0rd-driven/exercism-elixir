@@ -19,5 +19,8 @@ defmodule Lasagna do
     preparation_time_in_minutes(layers) + minutes
   end
 
-  # TODO: define the 'alarm/0' function
+  @spec alarm :: <<_::40>>
+  def alarm do
+    "Ding!"
+  end
 end
