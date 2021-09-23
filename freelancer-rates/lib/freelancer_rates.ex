@@ -6,7 +6,8 @@ defmodule FreelancerRates do
 
   @spec apply_discount(number, number) :: float
   def apply_discount(before_discount, discount) do
-    before_discount - (before_discount / discount)
+    percentage = discount / 100
+    before_discount - before_discount * percentage
   end
 
   def monthly_rate(hourly_rate, discount) do
