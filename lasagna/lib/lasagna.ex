@@ -14,7 +14,10 @@ defmodule Lasagna do
     layers * 2
   end
 
-  # TODO: define the 'total_time_in_minutes/2' function
+  @spec total_time_in_minutes(number, number) :: number
+  def total_time_in_minutes(layers, minutes) do
+    preparation_time_in_minutes(layers) + minutes
+  end
 
   # TODO: define the 'alarm/0' function
 end
