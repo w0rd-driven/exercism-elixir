@@ -1,6 +1,7 @@
 defmodule FreelancerRates do
+  @spec daily_rate(number) :: float
   def daily_rate(hourly_rate) do
-    # Please implement the daily_rate/1 function
+    hourly_rate * 8.0
   end
 
   def apply_discount(before_discount, discount) do
