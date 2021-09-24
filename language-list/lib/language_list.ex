@@ -15,8 +15,10 @@ defmodule LanguageList do
     tail
   end
 
+  @spec first(nonempty_maybe_improper_list) :: any
   def first(list) do
-    # Please implement the first/1 function
+    [head | _tail] = list
+    head
   end
 
   def count(list) do
