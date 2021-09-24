@@ -4,8 +4,9 @@ defmodule LanguageList do
     []
   end
 
+  @spec add(any, any) :: nonempty_maybe_improper_list
   def add(list, language) do
-    # Please implement the add/2 function
+    [ language | list ]
   end
 
   def remove(list) do
