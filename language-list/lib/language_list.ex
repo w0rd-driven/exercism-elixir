@@ -21,8 +21,9 @@ defmodule LanguageList do
     head
   end
 
+  @spec count(list) :: non_neg_integer
   def count(list) do
-    # Please implement the count/1 function
+    list |> length
   end
 
   def exciting_list?(list) do
