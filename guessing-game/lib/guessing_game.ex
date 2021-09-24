@@ -1,5 +1,7 @@
 defmodule GuessingGame do
   def compare(secret_number, guess) do
-    # Please implement the compare/2 function
+    cond do
+      secret_number === guess -> "Correct"
+    end
   end
 end
