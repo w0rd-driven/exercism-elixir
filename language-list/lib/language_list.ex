@@ -26,7 +26,8 @@ defmodule LanguageList do
     list |> length
   end
 
+  @spec exciting_list?(nonempty_maybe_improper_list) :: boolean
   def exciting_list?(list) do
-    # Please implement the exciting_list?/1 function
+    "Elixir" in list
   end
 end
