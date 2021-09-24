@@ -9,8 +9,10 @@ defmodule LanguageList do
     [ language | list ]
   end
 
+  @spec remove(nonempty_maybe_improper_list) :: any
   def remove(list) do
-    # Please implement the remove/1 function
+    [_head | tail] = list
+    tail
   end
 
   def first(list) do
