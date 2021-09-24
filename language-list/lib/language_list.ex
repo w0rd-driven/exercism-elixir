@@ -1,6 +1,7 @@
 defmodule LanguageList do
+  @spec new :: []
   def new() do
-    # Please implement the new/0 function
+    []
   end
 
   def add(list, language) do
