@@ -1,4 +1,8 @@
 defmodule Username do
+  def sanitize('') do
+    ''
+  end
+
   def sanitize(username) do
     # ä becomes ae
     # ö becomes oe
