@@ -33,8 +33,14 @@ defmodule BirdCount do
     end
   end
 
+  @spec total([number]) :: number
+  def total([]) do
+    0
+  end
+
   def total(list) do
-    # Please implement the total/1 function
+    [head | tail] = list
+    head + total(tail)
   end
 
   def busy_days(list) do
