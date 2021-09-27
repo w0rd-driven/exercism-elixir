@@ -1,6 +1,12 @@
 defmodule BirdCount do
+  @spec today(maybe_improper_list) :: any
+  def today([]) do
+    nil
+  end
+
   def today(list) do
-    # Please implement the today/1 function
+    [head | _tail] = list
+    head
   end
 
   def increment_day_count(list) do
