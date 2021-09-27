@@ -7,6 +7,7 @@ defmodule Username do
     [head | tail] = username
     case head do
       head when head >= 0x0061 and head <= 0x0007A -> [head | sanitize(tail)]
+      head when head == 0x005F -> [head | sanitize(tail)]
       _ -> sanitize(tail)
     end
     # ä becomes ae
