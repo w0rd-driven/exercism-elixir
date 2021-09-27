@@ -43,7 +43,17 @@ defmodule BirdCount do
     head + total(tail)
   end
 
+  @spec busy_days(list) :: non_neg_integer
+  def busy_days([]) do
+    0
+  end
+
   def busy_days(list) do
-    # Please implement the busy_days/1 function
+    [head | tail] = list
+    if head >= 5 do
+      1 + busy_days(tail)
+    else
+      busy_days(tail)
+    end
   end
 end
