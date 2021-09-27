@@ -35,11 +35,32 @@ defmodule KitchenCalculator do
     {:milliliter, volume}
   end
 
+  @spec from_milliliter(any, :cup | :fluid_ounce | :milliliter | :tablespoon | :teaspoon) :: any
   def from_milliliter(volume_pair, unit) do
-    # Please implement the from_milliliter/2 functions
+    convert_from_milliliter(volume_pair, unit)
   end
 
-  def convert(volume_pair, unit) do
+  defp convert_from_milliliter(volume_pair, :cup) do
+    {:cup, get_volume(volume_pair) / 240}
+  end
+
+  defp convert_from_milliliter(volume_pair, :fluid_ounce) do
+    {:fluid_ounce, get_volume(volume_pair) / 30}
+  end
+
+  defp convert_from_milliliter(volume_pair, :teaspoon) do
+    {:teaspoon, get_volume(volume_pair) / 5}
+  end
+
+  defp convert_from_milliliter(volume_pair, :tablespoon) do
+    {:tablespoon, get_volume(volume_pair) / 15}
+  end
+
+  defp convert_from_milliliter(volume_pair, :milliliter) do
+    volume_pair
+  end
+
+def convert(volume_pair, unit) do
     # Please implement the convert/2 function
   end
 end
