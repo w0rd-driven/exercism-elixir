@@ -60,7 +60,16 @@ defmodule KitchenCalculator do
     volume_pair
   end
 
-def convert(volume_pair, unit) do
-    # Please implement the convert/2 function
+  @spec convert(
+          {:cup, number}
+          | {:fluid_ounce, number}
+          | {:milliliter, any}
+          | {:tablespoon, number}
+          | {:teaspoon, number},
+          :cup | :fluid_ounce | :milliliter | :tablespoon | :teaspoon
+        ) :: any
+  def convert(volume_pair, unit) do
+    milliliters = convert_to_milliliter(volume_pair)
+    convert_from_milliliter(milliliters, unit)
   end
 end
