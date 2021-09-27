@@ -9,8 +9,14 @@ defmodule BirdCount do
     head
   end
 
+  @spec increment_day_count(maybe_improper_list) :: nonempty_maybe_improper_list
+  def increment_day_count([]) do
+    [1]
+  end
+
   def increment_day_count(list) do
-    # Please implement the increment_day_count/1 function
+    [head | tail] = list
+    [head + 1 | tail]
   end
 
   def has_day_without_birds?(list) do
