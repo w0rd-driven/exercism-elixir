@@ -19,8 +19,18 @@ defmodule BirdCount do
     [head + 1 | tail]
   end
 
+  @spec has_day_without_birds?(maybe_improper_list) :: boolean
+  def has_day_without_birds?([]) do
+    false
+  end
+
   def has_day_without_birds?(list) do
-    # Please implement the has_day_without_birds?/1 function
+    [head | tail] = list
+    if head == 0 do
+      true
+    else
+      has_day_without_birds?(tail)
+    end
   end
 
   def total(list) do
