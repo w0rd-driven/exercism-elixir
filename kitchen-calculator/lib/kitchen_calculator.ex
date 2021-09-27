@@ -1,6 +1,7 @@
 defmodule KitchenCalculator do
+  @spec get_volume(tuple) :: any
   def get_volume(volume_pair) do
-    # Please implement the get_volume/1 function
+    elem(volume_pair, 1)
   end
 
   def to_milliliter(volume_pair) do
