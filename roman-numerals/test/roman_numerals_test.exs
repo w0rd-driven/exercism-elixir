@@ -16,17 +16,17 @@ defmodule RomanNumeralsTest do
     assert RomanNumerals.numeral(3) == "III"
   end
 
-  @tag :pending
+  # @tag :pending
   test "4" do
     assert RomanNumerals.numeral(4) == "IV"
   end
 
-  @tag :pending
+  # @tag :pending
   test "5" do
     assert RomanNumerals.numeral(5) == "V"
   end
 
-  @tag :pending
+  # @tag :pending
   test "6" do
     assert RomanNumerals.numeral(6) == "VI"
   end
