@@ -4,6 +4,8 @@ defmodule RomanNumerals do
   """
   @spec numeral(pos_integer) :: String.t()
   def numeral(0), do: ""
+  def numeral(number) when number >= 1000, do: "M" <> numeral(number - 1000)
+  def numeral(number) when number >= 900, do: "CM" <> numeral(number - 900)
   def numeral(number) when number >= 500, do: "D" <> numeral(number - 500)
   def numeral(number) when number >= 400, do: "CD" <> numeral(number - 400)
   def numeral(number) when number >= 100, do: "C" <> numeral(number - 100)

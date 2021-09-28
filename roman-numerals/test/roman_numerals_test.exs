@@ -76,17 +76,17 @@ defmodule RomanNumeralsTest do
     assert RomanNumerals.numeral(575) == "DLXXV"
   end
 
-  @tag :pending
+  # @tag :pending
   test "911" do
     assert RomanNumerals.numeral(911) == "CMXI"
   end
 
-  @tag :pending
+  # @tag :pending
   test "1024" do
     assert RomanNumerals.numeral(1024) == "MXXIV"
   end
 
-  @tag :pending
+  # @tag :pending
   test "3000" do
     assert RomanNumerals.numeral(3000) == "MMM"
   end
