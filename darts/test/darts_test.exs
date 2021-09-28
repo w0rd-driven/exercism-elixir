@@ -6,7 +6,7 @@ defmodule DartsTest do
     assert Darts.score({-9, 9}) == 0
   end
 
-  @tag :pending
+  # @tag :pending
   test "On the outer circle" do
     assert Darts.score({0, 10}) == 1
   end
@@ -46,17 +46,17 @@ defmodule DartsTest do
     assert Darts.score({-3.5, 3.5}) == 5
   end
 
-  @tag :pending
+  # @tag :pending
   test "Just outside the middle circle" do
     assert Darts.score({-3.6, -3.6}) == 1
   end
 
-  @tag :pending
+  # @tag :pending
   test "Just within the outer circle" do
     assert Darts.score({-7.0, 7.0}) == 1
   end
 
-  @tag :pending
+  # @tag :pending
   test "Just outside the outer circle" do
     assert Darts.score({7.1, -7.1}) == 0
   end
