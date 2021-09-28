@@ -46,32 +46,32 @@ defmodule RomanNumeralsTest do
     assert RomanNumerals.numeral(48) == "XLVIII"
   end
 
-  @tag :pending
+  # @tag :pending
   test "59" do
     assert RomanNumerals.numeral(59) == "LIX"
   end
 
-  @tag :pending
+  # @tag :pending
   test "93" do
     assert RomanNumerals.numeral(93) == "XCIII"
   end
 
-  @tag :pending
+  # @tag :pending
   test "141" do
     assert RomanNumerals.numeral(141) == "CXLI"
   end
 
-  @tag :pending
+  # @tag :pending
   test "163" do
     assert RomanNumerals.numeral(163) == "CLXIII"
   end
 
-  @tag :pending
+  # @tag :pending
   test "402" do
     assert RomanNumerals.numeral(402) == "CDII"
   end
 
-  @tag :pending
+  # @tag :pending
   test "575" do
     assert RomanNumerals.numeral(575) == "DLXXV"
   end
