@@ -6,12 +6,12 @@ defmodule RomanNumeralsTest do
     assert RomanNumerals.numeral(1) == "I"
   end
 
-  @tag :pending
+  # @tag :pending
   test "2" do
     assert RomanNumerals.numeral(2) == "II"
   end
 
-  @tag :pending
+  # @tag :pending
   test "3" do
     assert RomanNumerals.numeral(3) == "III"
   end
