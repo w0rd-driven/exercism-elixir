@@ -16,22 +16,22 @@ defmodule DartsTest do
     assert Darts.score({-5, 0}) == 5
   end
 
-  @tag :pending
+  # @tag :pending
   test "On the inner circle" do
     assert Darts.score({0, -1}) == 10
   end
 
-  @tag :pending
+  # @tag :pending
   test "Exactly on centre" do
     assert Darts.score({0, 0}) == 10
   end
 
-  @tag :pending
+  # @tag :pending
   test "Near the centre" do
     assert Darts.score({-0.1, -0.1}) == 10
   end
 
-  @tag :pending
+  # @tag :pending
   test "Just within the inner circle" do
     assert Darts.score({0.7, 0.7}) == 10
   end
