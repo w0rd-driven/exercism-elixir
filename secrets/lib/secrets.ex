@@ -1,6 +1,9 @@
 defmodule Secrets do
+  @spec secret_add(any) :: (number -> number)
   def secret_add(secret) do
-    # Please implement the secret_add/1 function
+    fn x ->
+      x + secret
+    end
   end
 
   def secret_subtract(secret) do
