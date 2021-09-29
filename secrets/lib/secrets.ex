@@ -6,8 +6,11 @@ defmodule Secrets do
     end
   end
 
+  @spec secret_subtract(any) :: (number -> number)
   def secret_subtract(secret) do
-    # Please implement the secret_subtract/1 function
+    fn x ->
+      x - secret
+    end
   end
 
   def secret_multiply(secret) do
