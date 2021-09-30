@@ -13,12 +13,18 @@ defmodule Secrets do
     end
   end
 
+  @spec secret_multiply(any) :: (number -> number)
   def secret_multiply(secret) do
-    # Please implement the secret_multiply/1 function
+    fn x ->
+      x * secret
+    end
   end
 
+  @spec secret_divide(any) :: (integer -> integer)
   def secret_divide(secret) do
-    # Please implement the secret_divide/1 function
+    fn x ->
+      div(x, secret)
+    end
   end
 
   def secret_and(secret) do
