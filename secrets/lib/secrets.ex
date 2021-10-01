@@ -27,15 +27,26 @@ defmodule Secrets do
     end
   end
 
+  @spec secret_and(any) :: (integer -> integer)
   def secret_and(secret) do
-    # Please implement the secret_and/1 function
+    fn x ->
+      Bitwise.&&&(x, secret)
+    end
   end
 
+  @spec secret_xor(any) :: (integer -> integer)
   def secret_xor(secret) do
-    # Please implement the secret_xor/1 function
+    fn x ->
+      Bitwise.bxor(x, secret)
+    end
   end
 
+  @spec secret_combine(any, any) :: (any -> any)
   def secret_combine(secret_function1, secret_function2) do
-    # Please implement the secret_combine/2 function
+    fn x ->
+      x
+      |> secret_function1.()
+      |> secret_function2.()
+    end
   end
 end
