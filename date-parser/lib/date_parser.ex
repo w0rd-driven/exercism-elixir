@@ -14,12 +14,14 @@ defmodule DateParser do
     "\\d{4}"
   end
 
+  @spec day_names :: String.t()
   def day_names() do
-    # Please implement the day_names/0 function
+    "(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)"
   end
 
+  @spec month_names :: String.t()
   def month_names() do
-    # Please implement the month_names/0 function
+    "(January|February|March|April|May|June|July|August|September|October|November|December)"
   end
 
   def capture_day() do
