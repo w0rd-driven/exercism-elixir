@@ -24,36 +24,44 @@ defmodule DateParser do
     "(January|February|March|April|May|June|July|August|September|October|November|December)"
   end
 
+  @spec capture_day :: String.t()
   def capture_day() do
-    # Please implement the capture_day/0 function
+    "(?<day>#{day()})"
   end
 
+  @spec capture_month :: String.t()
   def capture_month() do
-    # Please implement the capture_month/0 function
+    "(?<month>#{month()})"
   end
 
+  @spec capture_year :: String.t()
   def capture_year() do
-    # Please implement the capture_year/0 function
+    "(?<year>#{year()})"
   end
 
+  @spec capture_day_name :: String.t()
   def capture_day_name() do
-    # Please implement the capture_day_name/0 function
+    "(?<day_name>#{day_names()})"
   end
 
+  @spec capture_month_name :: String.t()
   def capture_month_name() do
-    # Please implement the capture_month_name/0 function
+    "(?<month_name>#{month_names()})"
   end
 
+  @spec capture_numeric_date :: String.t()
   def capture_numeric_date() do
-    # Please implement the capture_numeric_date/0 function
+    "#{capture_day()}/#{capture_month()}/#{capture_year()}"
   end
 
+  @spec capture_month_name_date :: String.t()
   def capture_month_name_date() do
-    # Please implement the capture_month_name_date/0 function
+    "#{capture_month_name()} #{capture_day()}, #{capture_year()}"
   end
 
+  @spec capture_day_month_name_date :: String.t()
   def capture_day_month_name_date() do
-    # Please implement the capture_day_month_name_date/0 function
+    "#{capture_day_name()}, #{capture_month_name()} #{capture_day()}, #{capture_year()}"
   end
 
   def match_numeric_date() do
