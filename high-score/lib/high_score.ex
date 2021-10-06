@@ -1,4 +1,5 @@
 defmodule HighScore do
+  @spec new :: %{}
   def new() do
     %{}
   end
@@ -25,7 +26,8 @@ defmodule HighScore do
     end)
   end
 
+  @spec get_players(map) :: list
   def get_players(scores) do
-    # Please implement the get_players/1 function
+    Map.keys(scores)
   end
 end
