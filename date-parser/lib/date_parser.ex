@@ -1,14 +1,17 @@
 defmodule DateParser do
+  @spec day :: String.t()
   def day() do
-    # Please implement the day/0 function
+    "(0?[1-9]|[12][0-9]|3[01])"
   end
 
+  @spec month :: String.t()
   def month() do
-    # Please implement the month/0 function
+    "(0?[1-9]|1[0-2])"
   end
 
+  @spec year :: String.t()
   def year() do
-    # Please implement the year/0 function
+    "\\d{4}"
   end
 
   def day_names() do
