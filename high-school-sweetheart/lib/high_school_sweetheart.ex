@@ -1,6 +1,7 @@
 defmodule HighSchoolSweetheart do
+  @spec first_letter(any) :: any
   def first_letter(name) do
-    # Please implement the first_letter/1 function
+    String.trim(name) |> String.first()
   end
 
   def initial(name) do
