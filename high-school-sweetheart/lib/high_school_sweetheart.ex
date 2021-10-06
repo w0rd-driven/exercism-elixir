@@ -4,8 +4,9 @@ defmodule HighSchoolSweetheart do
     String.trim(name) |> String.first()
   end
 
+  @spec initial(binary) :: binary
   def initial(name) do
-    # Please implement the initial/1 function
+    first_letter(name) <> "." |> String.upcase()
   end
 
   def initials(full_name) do
