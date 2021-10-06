@@ -9,8 +9,11 @@ defmodule HighSchoolSweetheart do
     first_letter(name) <> "." |> String.upcase()
   end
 
+  @spec initials(binary) :: binary
   def initials(full_name) do
-    # Please implement the initials/1 function
+    String.split(full_name, " ", trim: true) |> Enum.map(fn word ->
+      initial(word) <> " "
+    end) |> List.to_string() |> String.trim()
   end
 
   def pair(full_name1, full_name2) do
