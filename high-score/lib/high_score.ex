@@ -13,12 +13,16 @@ defmodule HighScore do
     Map.delete(scores, name)
   end
 
+  @spec reset_score(map, any) :: map
   def reset_score(scores, name) do
-    # Please implement the reset_score/2 function
+    Map.put(scores, name, 0)
   end
 
+  @spec update_score(map, any, any) :: map
   def update_score(scores, name, score) do
-    # Please implement the update_score/3 function
+    Map.update(scores, name, score, fn current_value ->
+      current_value + score
+    end)
   end
 
   def get_players(scores) do
