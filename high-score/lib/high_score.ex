@@ -8,8 +8,9 @@ defmodule HighScore do
     Map.put(scores, name, score)
   end
 
+  @spec remove_player(map, any) :: map
   def remove_player(scores, name) do
-    # Please implement the remove_player/2 function
+    Map.delete(scores, name)
   end
 
   def reset_score(scores, name) do
