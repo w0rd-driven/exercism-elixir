@@ -20,7 +20,14 @@ defmodule RPG.CharacterSheet do
     IO.gets("What is your character's level?\n") |> String.trim() |> String.to_integer()
   end
 
+  @spec run :: %{class: String.t(), level: integer, name: String.t()}
   def run() do
-    # Please implement the run/0 function
+    welcome()
+    name = ask_name()
+    class = ask_class()
+    level = ask_level()
+    character = %{class: class, level: level, name: name}
+    IO.inspect(character, label: "Your character")
+    character
   end
 end
