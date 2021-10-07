@@ -1,6 +1,8 @@
 defmodule RPG.CharacterSheet do
+  @spec welcome :: :ok
   def welcome() do
-    # Please implement the welcome/0 function
+    IO.puts("Welcome! Let's fill out your character sheet together.")
+    :ok
   end
 
   def ask_name() do
