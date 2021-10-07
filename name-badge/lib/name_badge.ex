@@ -1,5 +1,9 @@
 defmodule NameBadge do
   def print(id, name, department) do
-    "[#{id}] - #{name} - #{department |> String.upcase()}"
+    if id do
+      "[#{id}] - #{name} - #{department |> String.upcase()}"
+    else
+      "#{name} - #{department |> String.upcase()}"
+    end
   end
 end
