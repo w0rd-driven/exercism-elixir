@@ -1,5 +1,14 @@
 defmodule TakeANumber do
+  @spec start :: pid
   def start() do
-    spawn(fn -> 0 end)
+    spawn(fn -> run(0) end)
+  end
+
+  defp run(state) do
+    receive do
+      {:report_state, sender} ->
+        send(sender, state)
+        run(state)
+    end
   end
 end
