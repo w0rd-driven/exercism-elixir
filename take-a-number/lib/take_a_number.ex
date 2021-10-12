@@ -9,6 +9,10 @@ defmodule TakeANumber do
       {:report_state, sender} ->
         send(sender, state)
         run(state)
+      {:take_a_number, sender} ->
+        count = state + 1
+        send(sender, count)
+        run(count)
     end
   end
 end
