@@ -14,6 +14,7 @@ defmodule TakeANumber do
         send(sender, count)
         run(count)
       :stop -> {}
+      _msg -> run(state)
     end
   end
 end
