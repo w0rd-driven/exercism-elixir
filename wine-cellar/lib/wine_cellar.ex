@@ -1,6 +1,11 @@
 defmodule WineCellar do
+  @spec explain_colors :: [{:red, String.t()} | {:rose, String.t()} | {:white, String.t()}, ...]
   def explain_colors do
-    # Please implement the explain_colors/0 function
+    [
+      white: "Fermented without skin contact.",
+      red: "Fermented with skin contact using dark-colored grapes.",
+      rose: "Fermented with some skin contact, but not enough to qualify as a red wine.",
+    ]
   end
 
   def filter(cellar, color, opts \\ []) do
