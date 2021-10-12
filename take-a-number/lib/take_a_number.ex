@@ -13,6 +13,7 @@ defmodule TakeANumber do
         count = state + 1
         send(sender, count)
         run(count)
+      :stop -> {}
     end
   end
 end
