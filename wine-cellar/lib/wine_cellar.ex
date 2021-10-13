@@ -8,8 +8,9 @@ defmodule WineCellar do
     ]
   end
 
+  @spec filter(keyword, atom, any) :: list
   def filter(cellar, color, opts \\ []) do
-    # Please implement the filter/3 function
+    Keyword.get_values(cellar, color)
   end
 
   # The functions below do not need to be modified.
