@@ -11,7 +11,10 @@ defmodule WineCellar do
   @spec filter(keyword, atom, any) :: list
   def filter(cellar, color, opts \\ []) do
     Keyword.get_values(cellar, color)
+    |> filter_by_year(opts[:year])
   end
+
+  defp filter_by_year(wines, nil), do: wines
 
   # The functions below do not need to be modified.
 
