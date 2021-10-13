@@ -31,7 +31,13 @@ defmodule DNA do
     do_encode(tail, <<encoded::bitstring, encode_nucleotide(code_point)::4>>)
   end
 
+  @spec decode(bitstring()) :: charlist()
   def decode(dna) do
-    # Please implement the decode/1 function
+    do_decode(dna, '')
+  end
+
+  defp do_decode(<<0::0>>, decoded), do: decoded
+  defp do_decode(<<head::4, tail::bitstring>> = _dna, decoded) do
+    do_decode(tail, decoded ++ [decode_nucleotide(head)])
   end
 end
