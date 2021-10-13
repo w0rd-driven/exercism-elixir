@@ -1,4 +1,5 @@
 defmodule DNA do
+  @spec encode_nucleotide(integer()) :: integer()
   def encode_nucleotide(code_point) do
     case code_point do
       ?\s -> 0b0000
@@ -9,6 +10,7 @@ defmodule DNA do
     end
   end
 
+  @spec decode_nucleotide(integer) :: integer()
   def decode_nucleotide(encoded_code) do
     case encoded_code do
       0b0000 -> ?\s
@@ -19,8 +21,14 @@ defmodule DNA do
     end
   end
 
+  @spec encode(charlist()) :: bitstring()
   def encode(dna) do
-    # Please implement the encode/1 function
+    do_encode(dna, <<0::size(0)>>)
+  end
+
+  defp do_encode([], encoded), do: encoded
+  defp do_encode([code_point | tail] = _dna, encoded) do
+    do_encode(tail, <<encoded::bitstring, encode_nucleotide(code_point)::4>>)
   end
 
   def decode(dna) do
