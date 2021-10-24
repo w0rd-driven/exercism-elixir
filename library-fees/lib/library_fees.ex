@@ -1,6 +1,13 @@
 defmodule LibraryFees do
+  @spec datetime_from_string(binary) ::
+          :incompatible_calendars
+          | :invalid_date
+          | :invalid_format
+          | :invalid_time
+          | NaiveDateTime.t()
   def datetime_from_string(string) do
-    # Please implement the datetime_from_string/1 function
+    {_status, datetime} = NaiveDateTime.from_iso8601(string)
+    datetime
   end
 
   def before_noon?(datetime) do
