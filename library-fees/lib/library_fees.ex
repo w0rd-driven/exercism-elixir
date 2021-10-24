@@ -63,8 +63,19 @@ defmodule LibraryFees do
     end
   end
 
+  @spec monday?(%{
+          :calendar => atom,
+          :day => any,
+          :month => any,
+          :year => any,
+          optional(any) => any
+        }) :: boolean
   def monday?(datetime) do
-    # Please implement the monday?/1 function
+    day = Date.day_of_week(datetime)
+    cond do
+      day == 1 -> true
+      true -> false
+    end
   end
 
   def calculate_late_fee(checkout, return, rate) do
