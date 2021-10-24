@@ -10,8 +10,26 @@ defmodule LibraryFees do
     datetime
   end
 
+  @spec before_noon?(%{
+          :calendar => any,
+          :day => any,
+          :hour => any,
+          :microsecond => any,
+          :minute => any,
+          :month => any,
+          :second => any,
+          :year => any,
+          optional(any) => any
+        }) :: boolean
   def before_noon?(datetime) do
-    # Please implement the before_noon?/1 function
+    noon = ~T[12:00:00]
+    comparison = datetime
+    |> NaiveDateTime.to_time()
+    |> Time.compare(noon)
+    case comparison do
+      :lt -> true
+      _ -> false
+    end
   end
 
   def return_date(checkout_datetime) do
