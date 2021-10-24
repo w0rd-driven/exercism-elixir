@@ -56,10 +56,9 @@ defmodule LibraryFees do
           %{:calendar => atom, :day => any, :month => any, :year => any, optional(any) => any}
         ) :: integer
   def days_late(planned_return_date, actual_return_datetime) do
-    diff = Date.diff(planned_return_date, actual_return_datetime)
+    diff = Date.diff(actual_return_datetime, planned_return_date)
     cond do
-      diff > 0 -> 0
-      diff < 0 -> -diff
+      diff < 0 -> 0
       true -> diff
     end
   end
