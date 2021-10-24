@@ -32,8 +32,23 @@ defmodule LibraryFees do
     end
   end
 
+  @spec return_date(%{
+          :calendar => atom,
+          :day => any,
+          :hour => any,
+          :microsecond => {any, any},
+          :minute => any,
+          :month => any,
+          :second => any,
+          :year => any,
+          optional(any) => any
+        }) :: Date.t()
   def return_date(checkout_datetime) do
-    # Please implement the return_date/1 function
+    days = if checkout_datetime |> before_noon?(), do: 28, else: 29
+    seconds_in_day = 24 * 60 * 60
+    checkout_datetime
+    |> NaiveDateTime.add(days * seconds_in_day, :second)
+    |> NaiveDateTime.to_date()
   end
 
   def days_late(planned_return_date, actual_return_datetime) do
