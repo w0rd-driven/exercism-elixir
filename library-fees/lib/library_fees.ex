@@ -78,7 +78,13 @@ defmodule LibraryFees do
     end
   end
 
+  @spec calculate_late_fee(String.t(), String.t(), number) :: integer
   def calculate_late_fee(checkout, return, rate) do
-    # Please implement the calculate_late_fee/3 function
+    checkout_date = datetime_from_string(checkout)
+    return_date = datetime_from_string(return)
+    discount = if monday?(return_date), do: 0.5, else: 1
+
+    days_late(return_date(checkout_date), return_date) * rate * discount
+    |> floor()
   end
 end
