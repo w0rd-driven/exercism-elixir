@@ -51,8 +51,17 @@ defmodule LibraryFees do
     |> NaiveDateTime.to_date()
   end
 
+  @spec days_late(
+          %{:calendar => atom, :day => any, :month => any, :year => any, optional(any) => any},
+          %{:calendar => atom, :day => any, :month => any, :year => any, optional(any) => any}
+        ) :: integer
   def days_late(planned_return_date, actual_return_datetime) do
-    # Please implement the days_late/2 function
+    diff = Date.diff(planned_return_date, actual_return_datetime)
+    cond do
+      diff > 0 -> 0
+      diff < 0 -> -diff
+      true -> diff
+    end
   end
 
   def monday?(datetime) do
