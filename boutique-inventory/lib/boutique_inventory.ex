@@ -20,7 +20,9 @@ defmodule BoutiqueInventory do
     Map.put(item, :quantity_by_size, quantity_by_size)
   end
 
+  @spec total_quantity(atom | %{:quantity_by_size => any, optional(any) => any}) :: any
   def total_quantity(item) do
-    # Please implement the total_quantity/1 function
+    item.quantity_by_size
+    |> Enum.reduce(0, fn {_key, value}, accumulator -> value + accumulator end)
   end
 end
