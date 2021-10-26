@@ -1,6 +1,7 @@
 defmodule BoutiqueInventory do
+  @spec sort_by_price(any) :: list
   def sort_by_price(inventory) do
-    # Please implement the sort_by_price/1 function
+    Enum.sort_by(inventory, &(&1.price), :asc)
   end
 
   def with_missing_price(inventory) do
