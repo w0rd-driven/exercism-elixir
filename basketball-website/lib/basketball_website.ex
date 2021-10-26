@@ -9,7 +9,10 @@ defmodule BasketballWebsite do
   defp extract_data(data, [head | tail]) do
     extract_data(data[head], tail)
   end
+
+  @spec get_in_path(any, String.t()) :: any
   def get_in_path(data, path) do
-    # Please implement the get_in_path/2 function
+    path_parts = String.split(path, ".")
+    get_in(data, path_parts)
   end
 end
