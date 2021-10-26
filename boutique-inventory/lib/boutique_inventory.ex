@@ -9,8 +9,15 @@ defmodule BoutiqueInventory do
     Enum.filter(inventory, fn item -> item.price == nil end)
   end
 
+  @spec increase_quantity(%{:quantity_by_size => any, optional(any) => any}, any) :: %{
+          :quantity_by_size => any,
+          optional(any) => any
+        }
   def increase_quantity(item, count) do
-    # Please implement the increase_quantity/2 function
+    quantity_by_size = item.quantity_by_size
+    |> Enum.map(fn {key, value} -> {key, value + count} end)
+    |> Enum.into(%{})
+    Map.put(item, :quantity_by_size, quantity_by_size)
   end
 
   def total_quantity(item) do
