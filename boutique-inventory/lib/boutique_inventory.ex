@@ -4,8 +4,9 @@ defmodule BoutiqueInventory do
     Enum.sort_by(inventory, &(&1.price), :asc)
   end
 
+  @spec with_missing_price(any) :: list
   def with_missing_price(inventory) do
-    # Please implement the with_missing_price/1 function
+    Enum.filter(inventory, fn item -> item.price == nil end)
   end
 
   def increase_quantity(item, count) do
