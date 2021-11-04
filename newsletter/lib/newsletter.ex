@@ -33,7 +33,28 @@ defmodule Newsletter do
     File.close(pid)
   end
 
+  @spec send_newsletter(
+          String.t()
+          | maybe_improper_list(
+              String.t() | maybe_improper_list(any, String.t() | []) | char,
+              String.t() | []
+            ),
+          String.t()
+          | maybe_improper_list(
+              String.t() | maybe_improper_list(any, String.t() | []) | char,
+              String.t() | []
+            ),
+          any
+        ) :: :ok | {:error, atom}
   def send_newsletter(emails_path, log_path, send_fun) do
-    # Please implement the send_newsletter/3 function
+    device = open_log(log_path)
+    read_emails(emails_path)
+    |> Enum.each(fn email ->
+      case send_fun.(email) do
+        :ok -> log_sent_email(device, email)
+        _ -> nil
+      end
+    end)
+    close_log(device)
   end
 end
