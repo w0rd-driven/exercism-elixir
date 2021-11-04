@@ -28,8 +28,9 @@ defmodule Newsletter do
     IO.write(pid, email <> "\n")
   end
 
+  @spec close_log(pid | {:file_descriptor, atom, any}) :: :ok | {:error, atom}
   def close_log(pid) do
-    # Please implement the close_log/1 function
+    File.close(pid)
   end
 
   def send_newsletter(emails_path, log_path, send_fun) do
