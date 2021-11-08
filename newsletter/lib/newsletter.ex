@@ -19,13 +19,12 @@ defmodule Newsletter do
             )
         ) :: pid | {:file_descriptor, atom, any}
   def open_log(path) do
-    {:ok, pid} = File.open(path, [:write])
-    pid
+    File.open!(path, [:write])
   end
 
   @spec log_sent_email(atom | pid, String.t()) :: :ok
   def log_sent_email(pid, email) do
-    IO.write(pid, email <> "\n")
+    IO.puts(pid, email)
   end
 
   @spec close_log(pid | {:file_descriptor, atom, any}) :: :ok | {:error, atom}
