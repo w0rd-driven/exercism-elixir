@@ -48,13 +48,13 @@ defmodule Newsletter do
         ) :: :ok | {:error, atom}
   def send_newsletter(emails_path, log_path, send_fun) do
     device = open_log(log_path)
-    read_emails(emails_path)
-    |> Enum.each(fn email ->
+    emails = read_emails(emails_path)
+    for email <- emails do
       case send_fun.(email) do
         :ok -> log_sent_email(device, email)
         _ -> nil
       end
-    end)
+    end
     close_log(device)
   end
 end
