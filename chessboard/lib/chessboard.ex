@@ -4,8 +4,9 @@ defmodule Chessboard do
     1..8
   end
 
+  @spec file_range :: Range.t()
   def file_range do
-    # Please implement the file_range/0 function
+    ?A..?H
   end
 
   def ranks do
