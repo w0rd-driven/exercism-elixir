@@ -14,7 +14,8 @@ defmodule Chessboard do
     rank_range() |> Enum.to_list()
   end
 
+  @spec files :: list
   def files do
-    # Please implement the files/0 function
+    file_range() |> Enum.map(fn character -> <<character>> end)
   end
 end
