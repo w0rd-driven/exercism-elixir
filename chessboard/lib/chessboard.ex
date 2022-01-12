@@ -9,8 +9,9 @@ defmodule Chessboard do
     ?A..?H
   end
 
+  @spec ranks :: list
   def ranks do
-    # Please implement the ranks/0 function
+    rank_range() |> Enum.to_list()
   end
 
   def files do
