@@ -1,6 +1,7 @@
 defmodule Chessboard do
+  @spec rank_range :: Range.t()
   def rank_range do
-    # Please implement the rank_range/0 function
+    1..8
   end
 
   def file_range do
