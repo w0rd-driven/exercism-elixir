@@ -11,11 +11,13 @@ defmodule Chessboard do
 
   @spec ranks :: list
   def ranks do
-    rank_range() |> Enum.to_list()
+    rank_range()
+    |> Enum.to_list()
   end
 
-  @spec files :: list
+  @spec files :: [char()]
   def files do
-    file_range() |> Enum.map(fn character -> <<character>> end)
+    file_range()
+    |> Enum.map(& <<&1>>)
   end
 end
