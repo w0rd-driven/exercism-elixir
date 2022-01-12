@@ -2,7 +2,6 @@ defmodule RPG.CharacterSheet do
   @spec welcome :: :ok
   def welcome() do
     IO.puts("Welcome! Let's fill out your character sheet together.")
-    :ok
   end
 
   @spec ask_name :: String.t()
@@ -28,6 +27,5 @@ defmodule RPG.CharacterSheet do
     level = ask_level()
     character = %{class: class, level: level, name: name}
     IO.inspect(character, label: "Your character")
-    character
   end
 end
