@@ -13,11 +13,11 @@ defmodule IsbnVerifier do
   """
   @spec isbn?(String.t()) :: boolean
   def isbn?(isbn) do
+    isbn |> get_isbn_as_list
   end
 
   @spec get_isbn_as_list(String.t()) :: list
   defp get_isbn_as_list(isbn) do
-    numbers = isbn |> String.replace("-", "", trim: true)
-
+    isbn |> String.replace("-", "", trim: true) |> String.graphemes
   end
 end
