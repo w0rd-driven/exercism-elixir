@@ -10,10 +10,7 @@ defmodule CaptainsLog do
   end
 
   def random_stardate() do
-    year = 41_000 .. 42_000 |> Enum.random()
-    date = :rand.uniform()
-    year + date
-    # :rand.uniform() * (42000.0 - 41000.0) + 41000.0
+    :rand.uniform() * (42000.0 - 41000.0) + 41000.0
   end
 
   def format_stardate(stardate) do
