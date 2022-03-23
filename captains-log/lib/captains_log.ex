@@ -6,7 +6,8 @@ defmodule CaptainsLog do
   end
 
   def random_ship_registry_number() do
-    # Please implement the random_ship_registry_number/0 function
+    number = 1000 .. 9999 |> Enum.random()
+    "NCC-#{number}"
   end
 
   def random_stardate() do
