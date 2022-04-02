@@ -43,7 +43,20 @@ defmodule RemoteControlCar do
     end
   end
 
-  def drive(remote_car) do
-    # Please implement the drive/1 function
+  @spec drive(%__MODULE__{
+          :battery_percentage => integer(),
+          :distance_driven_in_meters => integer,
+          :nickname => String.t()
+        }) :: %__MODULE__{}
+  def drive(remote_car = %RemoteControlCar{}) do
+    new_percentage =
+      if remote_car.battery_percentage == 0, do: 0, else: remote_car.battery_percentage - 1
+
+    new_distance =
+      if remote_car.battery_percentage == 0,
+        do: 0,
+        else: remote_car.distance_driven_in_meters + 20
+
+    %{remote_car | battery_percentage: new_percentage, distance_driven_in_meters: new_distance}
   end
 end
