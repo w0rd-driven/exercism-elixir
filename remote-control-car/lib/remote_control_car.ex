@@ -29,8 +29,18 @@ defmodule RemoteControlCar do
     "#{remote_car.distance_driven_in_meters} meters"
   end
 
-  def display_battery(remote_car) do
+  @spec display_battery(%__MODULE__{
+          :battery_percentage => integer(),
+          :distance_driven_in_meters => integer,
+          :nickname => String.t()
+        }) :: String.t()
+  def display_battery(remote_car = %RemoteControlCar{}) do
     # Please implement the display_battery/1 function
+    if remote_car.battery_percentage == 0 do
+      "Battery empty"
+    else
+      "Battery at #{remote_car.battery_percentage}%"
+    end
   end
 
   def drive(remote_car) do
