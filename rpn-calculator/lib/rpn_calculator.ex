@@ -1,5 +1,4 @@
 defmodule RPNCalculator do
-
   @spec calculate!(any, (any -> any)) :: any
   def calculate!(stack, operation) do
     operation.(stack)
@@ -14,7 +13,12 @@ defmodule RPNCalculator do
     end
   end
 
+  @spec calculate_verbose(any, any) :: {:error, String.t()} | {:ok, any}
   def calculate_verbose(stack, operation) do
-    # Please implement the calculate_verbose/2 function
+    try do
+      {:ok, calculate!(stack, operation)}
+    rescue
+      _error -> {:error, "test error"}
+    end
   end
 end
