@@ -1,6 +1,8 @@
 defmodule RPNCalculator do
+
+  @spec calculate!(any, (any -> any)) :: any
   def calculate!(stack, operation) do
-    # Please implement the calculate!/2 function
+    operation.(stack)
   end
 
   def calculate(stack, operation) do
