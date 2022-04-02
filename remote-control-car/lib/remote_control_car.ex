@@ -1,4 +1,5 @@
 defmodule RemoteControlCar do
+  @enforce_keys [:nickname]
   defstruct [:battery_percentage, :distance_driven_in_meters, :nickname]
 
   @spec new :: %RemoteControlCar{
@@ -27,8 +28,8 @@ defmodule RemoteControlCar do
     }
   end
 
-  def display_distance(remote_car) do
-    # Please implement the display_distance/1 function
+  def display_distance(remote_car = %RemoteControlCar{}) do
+    "#{remote_car.distance_driven_in_meters} meters"
   end
 
   def display_battery(remote_car) do
