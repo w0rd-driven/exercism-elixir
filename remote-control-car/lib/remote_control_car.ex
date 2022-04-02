@@ -1,8 +1,17 @@
 defmodule RemoteControlCar do
-  # Please implement the struct with the specified fields
+  defstruct [:battery_percentage, :distance_driven_in_meters, :nickname]
 
+  @spec new :: %RemoteControlCar{
+          battery_percentage: integer(),
+          distance_driven_in_meters: integer(),
+          nickname: String.t()
+        }
   def new() do
-    # Please implement the new/0 function
+    %RemoteControlCar{
+      battery_percentage: 100,
+      distance_driven_in_meters: 0,
+      nickname: "none"
+    }
   end
 
   def new(nickname) do
