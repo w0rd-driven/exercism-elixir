@@ -14,8 +14,17 @@ defmodule RemoteControlCar do
     }
   end
 
+  @spec new(any) :: %RemoteControlCar{
+          battery_percentage: integer(),
+          distance_driven_in_meters: integer(),
+          nickname: String.t()
+        }
   def new(nickname) do
-    # Please implement the new/1 function
+    %RemoteControlCar{
+      battery_percentage: 100,
+      distance_driven_in_meters: 0,
+      nickname: nickname
+    }
   end
 
   def display_distance(remote_car) do
