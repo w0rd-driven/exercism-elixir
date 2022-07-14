@@ -22,7 +22,10 @@ defmodule CommunityGarden do
   end
 
   def release(pid, plot_id) do
-    # Please implement the release/2 function
+    Agent.cast(pid, fn %{plots: plots} = state ->
+      released = plots |> Enum.filter(fn %{plot_id: id} -> id != plot_id end)
+      %{state | plots: released}
+    end)
   end
 
   def get_registration(pid, plot_id) do
