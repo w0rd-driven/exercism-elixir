@@ -1,5 +1,6 @@
 defmodule NeedForSpeed do
   # Add missing aliases and imports here.
+  alias NeedForSpeed.Race
 
   # Do not edit the code below.
 
