@@ -6,7 +6,7 @@ end
 
 defmodule CommunityGarden do
   def start(opts \\ []) do
-    Agent.start_link(fn -> %{plots: []} end, opts)
+    Agent.start_link(fn -> %{plots: [], index: 0} end, opts)
   end
 
   def list_registrations(pid) do
@@ -14,7 +14,11 @@ defmodule CommunityGarden do
   end
 
   def register(pid, register_to) do
-    # Please implement the register/2 function
+    Agent.get_and_update(pid, fn %{plots: plots, index: index} ->
+      index = index + 1
+      plot = %Plot{plot_id: index, registered_to: register_to}
+      {plot, %{plots: [plot| plots], index: index}}
+    end)
   end
 
   def release(pid, plot_id) do
