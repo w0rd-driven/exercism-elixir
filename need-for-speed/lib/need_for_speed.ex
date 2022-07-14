@@ -2,6 +2,7 @@ defmodule NeedForSpeed do
   # Add missing aliases and imports here.
   alias NeedForSpeed.Race
   alias NeedForSpeed.RemoteControlCar, as: Car
+  import IO, only: [puts: 1, puts: 2]
 
   # Do not edit the code below.
 
