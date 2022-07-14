@@ -35,4 +35,10 @@ defmodule RPG do
       {%EmptyBottle{}, %{character | mana: character.mana + item.strength}}
     end
   end
+
+  defimpl Edible, for: Poison do
+    def eat(_item, character) do
+      {%EmptyBottle{}, %{character | health: 0}}
+    end
+  end
 end
