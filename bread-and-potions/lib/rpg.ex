@@ -23,4 +23,10 @@ defmodule RPG do
     @doc "Character consuming the item, give the effects"
     def eat(item, character)
   end
+
+  defimpl Edible, for: LoafOfBread do
+    def eat(_item, character) do
+      {nil, %{character | health: character.health + 5}}
+    end
+  end
 end
