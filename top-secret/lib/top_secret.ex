@@ -3,17 +3,18 @@ defmodule TopSecret do
     Code.string_to_quoted!(string)
   end
 
-  def decode_secret_message_part({operation, _, definition} = ast, acc) when operation in [:def, :defp] do
+  def decode_secret_message_part({operation, _, definition} = ast, accumulator)
+      when operation in [:def, :defp] do
     {name, arguments} = get_function_name_and_arguments(definition)
 
     arity = length(arguments)
     message = String.slice(to_string(name), 0, arity)
 
-    {ast, [message | acc]}
+    {ast, [message | accumulator]}
   end
 
-  def decode_secret_message_part(ast, acc) do
-    {ast, acc}
+  def decode_secret_message_part(ast, accumulator) do
+    {ast, accumulator}
   end
 
   defp get_function_name_and_arguments(definition) do
@@ -25,6 +26,11 @@ defmodule TopSecret do
   end
 
   def decode_secret_message(string) do
-    # Please implement the decode_secret_message/1 function
+    ast = to_ast(string)
+    {_, decoded} = Macro.prewalk(ast, [], &decode_secret_message_part/2)
+
+    decoded
+    |> Enum.reverse()
+    |> Enum.join("")
   end
 end
