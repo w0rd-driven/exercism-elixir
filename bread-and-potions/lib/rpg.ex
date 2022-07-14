@@ -19,5 +19,8 @@ defmodule RPG do
     defstruct []
   end
 
-  # Add code to define the protocol and its implementations below here...
+  defprotocol Edible do
+    @doc "Character consuming the item, give the effects"
+    def eat(item, character)
+  end
 end
