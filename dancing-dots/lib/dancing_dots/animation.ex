@@ -4,7 +4,6 @@ defmodule DancingDots.Animation do
   @type error :: any
   @type frame_number :: pos_integer
 
-  # Please implement the module
   @callback init(opts) :: {:ok, opts} | {:error, error}
   @callback handle_frame(dot, frame_number, opts) :: dot
 
@@ -21,7 +20,16 @@ defmodule DancingDots.Animation do
 end
 
 defmodule DancingDots.Flicker do
-  # Please implement the module
+  use DancingDots.Animation
+
+  @impl DancingDots.Animation
+  def handle_frame(dot, frame_number, _opts) do
+    if rem(frame_number, 4) == 0 do
+      %{dot | opacity: dot.opacity / 2}
+    else
+      dot
+    end
+  end
 end
 
 defmodule DancingDots.Zoom do
