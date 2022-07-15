@@ -7,6 +7,17 @@ defmodule DancingDots.Animation do
   # Please implement the module
   @callback init(opts) :: {:ok, opts} | {:error, error}
   @callback handle_frame(dot, frame_number, opts) :: dot
+
+  defmacro __using__(_) do
+    quote do
+      @behaviour DancingDots.Animation
+      def init(opts) do
+        {:ok, opts}
+      end
+
+      defoverridable init: 1
+    end
+  end
 end
 
 defmodule DancingDots.Flicker do
