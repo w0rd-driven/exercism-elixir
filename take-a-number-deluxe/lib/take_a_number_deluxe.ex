@@ -1,9 +1,10 @@
 defmodule TakeANumberDeluxe do
   # Client API
+  use GenServer
 
   @spec start_link(keyword()) :: {:ok, pid()} | {:error, atom()}
   def start_link(init_arg) do
-    # Please implement the start_link/1 function
+    GenServer.start_link(__MODULE__, init_arg)
   end
 
   @spec report_state(pid()) :: TakeANumberDeluxe.State.t()
@@ -27,6 +28,14 @@ defmodule TakeANumberDeluxe do
   end
 
   # Server callbacks
-
-  # Please implement the necessary callbacks
+  @impl GenServer
+  def init(init_args) do
+    timeout = Keyword.get(init_args, :auto_shutdown_timeout, :infinity)
+    min_number = Keyword.get(init_args, :min_number)
+    max_number = Keyword.get(init_args, :max_number)
+    case TakeANumberDeluxe.State.new(min_number, max_number, timeout) do
+      {:ok, state} -> {:ok, state}
+      {:error, reason} -> {:stop, reason}
+    end
+  end
 end
