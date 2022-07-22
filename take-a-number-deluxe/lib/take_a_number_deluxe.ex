@@ -9,7 +9,7 @@ defmodule TakeANumberDeluxe do
 
   @spec report_state(pid()) :: TakeANumberDeluxe.State.t()
   def report_state(machine) do
-    # Please implement the report_state/1 function
+    GenServer.call(machine, :report_state)
   end
 
   @spec queue_new_number(pid()) :: {:ok, integer()} | {:error, atom()}
@@ -37,5 +37,10 @@ defmodule TakeANumberDeluxe do
       {:ok, state} -> {:ok, state}
       {:error, reason} -> {:stop, reason}
     end
+  end
+
+  @impl GenServer
+  def handle_call(:report_state, _reply, state) do
+    {:reply, state, state}
   end
 end
