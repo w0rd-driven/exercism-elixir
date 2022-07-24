@@ -19,7 +19,7 @@ defmodule TakeANumberDeluxe do
 
   @spec serve_next_queued_number(pid(), integer() | nil) :: {:ok, integer()} | {:error, atom()}
   def serve_next_queued_number(machine, priority_number \\ nil) do
-    # Please implement the serve_next_queued_number/2 function
+    GenServer.call(machine, {:serve_next_queued_number, priority_number})
   end
 
   @spec reset_state(pid()) :: :ok
@@ -48,6 +48,14 @@ defmodule TakeANumberDeluxe do
   def handle_call(:queue_new_number, _reply, state) do
     case TakeANumberDeluxe.State.queue_new_number(state) do
       {:ok, new_number, new_state} -> {:reply, {:ok, new_number}, new_state}
+      {:error, error} -> {:reply, {:error, error}, state}
+    end
+  end
+
+  @impl GenServer
+  def handle_call({:serve_next_queued_number, priority_number}, _reply, state) do
+    case TakeANumberDeluxe.State.serve_next_queued_number(state, priority_number) do
+      {:ok, next_number, new_state} -> {:reply, {:ok, next_number}, new_state}
       {:error, error} -> {:reply, {:error, error}, state}
     end
   end
