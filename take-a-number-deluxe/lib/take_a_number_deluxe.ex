@@ -1,5 +1,6 @@
 defmodule TakeANumberDeluxe do
   # Client API
+  alias TakeANumberDeluxe.State
   use GenServer
 
   @spec start_link(keyword()) :: {:ok, pid()} | {:error, atom()}
@@ -7,7 +8,7 @@ defmodule TakeANumberDeluxe do
     GenServer.start_link(__MODULE__, init_arg)
   end
 
-  @spec report_state(pid()) :: TakeANumberDeluxe.State.t()
+  @spec report_state(pid()) :: State.t()
   def report_state(machine) do
     GenServer.call(machine, :report_state)
   end
@@ -24,7 +25,7 @@ defmodule TakeANumberDeluxe do
 
   @spec reset_state(pid()) :: :ok
   def reset_state(machine) do
-    # Please implement the reset_state/1 function
+    GenServer.cast(machine, :reset_state)
   end
 
   # Server callbacks
@@ -33,7 +34,7 @@ defmodule TakeANumberDeluxe do
     timeout = Keyword.get(init_args, :auto_shutdown_timeout, :infinity)
     min_number = Keyword.get(init_args, :min_number)
     max_number = Keyword.get(init_args, :max_number)
-    case TakeANumberDeluxe.State.new(min_number, max_number, timeout) do
+    case State.new(min_number, max_number, timeout) do
       {:ok, state} -> {:ok, state}
       {:error, reason} -> {:stop, reason}
     end
@@ -46,7 +47,7 @@ defmodule TakeANumberDeluxe do
 
   @impl GenServer
   def handle_call(:queue_new_number, _reply, state) do
-    case TakeANumberDeluxe.State.queue_new_number(state) do
+    case State.queue_new_number(state) do
       {:ok, new_number, new_state} -> {:reply, {:ok, new_number}, new_state}
       {:error, error} -> {:reply, {:error, error}, state}
     end
@@ -54,9 +55,16 @@ defmodule TakeANumberDeluxe do
 
   @impl GenServer
   def handle_call({:serve_next_queued_number, priority_number}, _reply, state) do
-    case TakeANumberDeluxe.State.serve_next_queued_number(state, priority_number) do
+    case State.serve_next_queued_number(state, priority_number) do
       {:ok, next_number, new_state} -> {:reply, {:ok, next_number}, new_state}
       {:error, error} -> {:reply, {:error, error}, state}
+    end
+  end
+
+  @impl GenServer
+  def handle_cast(:reset_state, %{min_number: min_number, max_number: max_number, auto_shutdown_timeout: timeout} = _state) do
+    case State.new(min_number, max_number, timeout) do
+      {:ok, state} -> {:noreply, state}
     end
   end
 end
