@@ -27,8 +27,11 @@ defmodule PaintByNumber do
     color
   end
 
+  def drop_first_pixel(picture, _) when picture == <<>>, do: ""
   def drop_first_pixel(picture, color_count) do
-    # Please implement the drop_first_pixel/2 function
+    number = palette_bit_size(color_count)
+    <<_::size(number), rest::bitstring>> = picture
+    rest
   end
 
   def concat_pictures(picture1, picture2) do
