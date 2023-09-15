@@ -20,8 +20,11 @@ defmodule PaintByNumber do
     <<pixel_color_index::size(palette_bit_size(color_count)), picture::bitstring>>
   end
 
+  def get_first_pixel(picture, _) when picture == <<>>, do: nil
   def get_first_pixel(picture, color_count) do
-    # Please implement the get_first_pixel/2 function
+    number = palette_bit_size(color_count)
+    <<color::size(number), _::bitstring>> = picture
+    color
   end
 
   def drop_first_pixel(picture, color_count) do
