@@ -9,7 +9,7 @@ defmodule PaintByNumber do
   def palette_bit_size(color_count), do: palette_bit_size(color_count, 1)
 
   def empty_picture() do
-    # Please implement the empty_picture/0 function
+    <<>>
   end
 
   def test_picture() do
