@@ -1,7 +1,12 @@
 defmodule PaintByNumber do
-  def palette_bit_size(color_count) do
-    # Please implement the palette_bit_size/1 function
+  defp palette_bit_size(color_count, bit_count) do
+    case Integer.pow(2, bit_count) do
+      number when number >= color_count -> bit_count
+      _ -> palette_bit_size(color_count, 1 + bit_count)
+    end
   end
+
+  def palette_bit_size(color_count), do: palette_bit_size(color_count, 1)
 
   def empty_picture() do
     # Please implement the empty_picture/0 function
